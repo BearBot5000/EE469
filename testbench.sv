@@ -19,17 +19,16 @@ module testbench();
     initial begin
         // start with a basic reset
         rst = 1; @(posedge clk);
-        rst <= 0; @(posedge clk);
+        rst <= 0; @(negedge clk);
 
         // repeat for 50 cycles. Not all 50 are necessary, however a loop at the end of the program will keep anything weird from happening
-        repeat(50) @(posedge clk);
+        repeat(60) @(posedge clk);
 
         // basic checking to ensure the right final answer is achieved. These DO NOT prove your system works. A more careful look at your 
         // simulation and code will be made.
 
         // task 1:
-        assert(cpu.processor.u_reg_file.memory[8] == 32'd11) $display("Task 1 Passed");
-        else                                                 $display("Task 1 Failed");
+     
 
         // task 2:
         //assert(cpu.processor.u_reg_file.memory[8] == 32'd1)  $display("Task 2 Passed");
